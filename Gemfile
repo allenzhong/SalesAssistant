@@ -34,6 +34,9 @@ gem 'jbuilder', '~> 2.5'
 # Use devise for authority and authentication
 gem 'devise'
 
+# Kaminari for paging
+gem 'kaminari'
+
 group :development, :test do
   gem 'faker'
   gem 'rspec-rails'
