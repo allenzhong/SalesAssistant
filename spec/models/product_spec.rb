@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Product, type: :model do
   context "Presence of" do
-    it { should validate_presence_of(name) }
-    it { should validate_presence_of(weight) }
-    it { should validate_presence_of(price) }
+    it { should validate_presence_of(:name) }
+    it { should validate_numericality_of(:weight) }
+    it { should validate_numericality_of(:price) }
   end
 
   context "CRUD " do
