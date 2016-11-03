@@ -1,8 +1,10 @@
 #Order
+#t.reference :user
 #t.integer :status, default: 0
 #t.decimal :total
 #t.references :recipient, foreign_key: true
 class Order < ApplicationRecord
+  belongs_to :user
   belongs_to :recipient
   has_many :order_items
   has_many :order_histories

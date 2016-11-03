@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161028205818) do
+ActiveRecord::Schema.define(version: 20161103053456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,7 +43,9 @@ ActiveRecord::Schema.define(version: 20161028205818) do
     t.integer  "recipient_id"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "user_id"
     t.index ["recipient_id"], name: "index_orders_on_recipient_id", using: :btree
+    t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
   create_table "products", force: :cascade do |t|
@@ -54,6 +56,8 @@ ActiveRecord::Schema.define(version: 20161028205818) do
     t.string   "image_url"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_products_on_user_id", using: :btree
   end
 
   create_table "recipients", force: :cascade do |t|
@@ -64,6 +68,8 @@ ActiveRecord::Schema.define(version: 20161028205818) do
     t.text     "memo"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_recipients_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -87,4 +93,7 @@ ActiveRecord::Schema.define(version: 20161028205818) do
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "recipients"
+  add_foreign_key "orders", "users"
+  add_foreign_key "products", "users"
+  add_foreign_key "recipients", "users"
 end

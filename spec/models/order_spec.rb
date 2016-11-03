@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Order, type: :model do
   context "Associations" do
+    it "should belongs to a user" do
+      should belong_to(:user)
+    end
+
     it "should have many order items" do
       should have_many(:order_items)
     end

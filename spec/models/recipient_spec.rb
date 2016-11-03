@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Recipient, type: :model do
+  it "should belongs to a user" do
+    should belong_to(:user)
+  end
+
   context "Associations" do
     it "has many recipients" do
       should have_many(:orders)
