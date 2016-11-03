@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
+  it "should belongs to a user" do
+    should belong_to(:user)
+  end
+
   context "Presence of" do
     it { should validate_presence_of(:name) }
     it { should validate_numericality_of(:weight) }

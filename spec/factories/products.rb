@@ -5,6 +5,7 @@ FactoryGirl.define do
     f.price {Faker::Number.decimal(2)}
     f.weight {Faker::Number.decimal(2)}
     f.image_url {Faker::Internet.url}
+    association :user, factory: :user
   end
 
 end
