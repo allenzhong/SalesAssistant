@@ -1,0 +1,64 @@
+
+<div class="container">
+  <div class="container">
+    <div class="header">
+      <h1>
+      Products
+      <div class="pull-right">
+        <%= link_to new_product_path, class:"btn btn-primary" do %>
+          <span class="glyphicon glyphicon-plus"></span>
+
+        <% end %>
+      </div>
+      </h1>
+    </div>
+  </div>
+  <div class="center-block">
+    <p id="notice"><%= notice %></p>
+
+    <table class="table table-hover table-responsive">
+      <thead>
+        <tr>
+          <th rowspan="2"></th>
+          <th colspan="2">Name</th>
+          <th>Price</th>
+          <th>Weight(g)</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td class="vert-align bottom-border" rowspan="2">
+              <div class="">
+                <%= image_tag product.image_url, size: "60"%>
+              </div>
+            </td>
+            <td class="vert-align" colspan="2"><%= product.name%></td>
+            <td class="vert-align"><%= product.price%></td>
+            <td class="vert-align"><%= product.weight%></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="bottom-border">
+              <div class="text-right">
+              <%= link_to product, class: "btn btn-default" do%>
+                <span class="glyphicon glyphicon-info-sign"></span>
+              <% end %>
+              <%= link_to edit_product_path(product), class: "btn btn-default" do %>
+                <span class="glyphicon glyphicon-edit"></span>
+              <% end %>
+              <%= link_to product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" do%>
+                <span class="glyphicon glyphicon-remove-sign"></span>
+              <% end %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <%= paginate @products %>
+
+    <%= link_to 'New Product', new_product_path %>
+  </div>
+</div>
