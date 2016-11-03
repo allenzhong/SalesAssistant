@@ -5,8 +5,10 @@ before_script:
 - bundle install --path vendor/bundle
 - bundle exec rake db:create
 - bundle exec rake db:migrate
+
 script:
 - bundle exec rspec
+
 deploy:
   provider: heroku
   api_key:
