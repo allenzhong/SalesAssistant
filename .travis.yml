@@ -12,10 +12,9 @@ deploy:
   api_key:
     secure: ${API_KEY}
   app: mynzsales
-    run:
-      - "rake db:migrate"
   on:
     branch: master
   run:
+    - "rake db:migrate"
     - "rake heroku:secrets RAILS_ENV=production"
     - "rake assets:precompile"
