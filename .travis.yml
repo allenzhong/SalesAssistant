@@ -15,7 +15,7 @@ deploy:
     run:
       - "rake db:migrate"
   on:
-    repo: allenzhong/SalesAssistant
+    branch: master
   run:
     - "rake heroku:secrets RAILS_ENV=production"
     - "rake assets:precompile"
