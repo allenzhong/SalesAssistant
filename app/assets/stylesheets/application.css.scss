@@ -16,6 +16,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.table tbody>tr td.bottom-border{
+  border-top : dotted 1px #ccc;
+  border-bottom: solid 1px #666666;
+}
 .table tbody>tr>td.vert-align{
   vertical-align: middle;
 }
