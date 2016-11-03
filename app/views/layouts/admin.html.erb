@@ -2,8 +2,8 @@
 <html>
   <head>
     <title>SalesAssistant</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -23,7 +23,7 @@
         <div id="bs-navbar-collapse" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <% if user_signed_in? %>
-              <li class=""> <%= link_to "Products", products_path %> </li>
+              <li class=""> <%= link_to "Products", admin_products_path %> </li>
               <li class=""><a href="#">Order</a></li>
             <% end %>
           </ul>
