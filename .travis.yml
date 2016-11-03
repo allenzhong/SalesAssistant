@@ -1,23 +1,21 @@
 language: ruby
 rvm:
 - 2.3.0
-
 before_script:
 - bundle install --path vendor/bundle
 - bundle exec rake db:create
 - bundle exec rake db:migrate
-
 script:
 - bundle exec rspec
-
 deploy:
   provider: heroku
   api_key:
-    secure: ${API_KEY}
+    secure: SFZotagxKLEY8X6lJP6WQTTUX4zVUTvkEqYDGnnki00iJgzoW39GJLa9uSDozwn0E9eMIQ0OUF6X/7FiZfVQvzUuv/C2/R8ECph7f3fM2929hsrtUuewVnup/V+bkQdjXnrjlTz22QGKeGBmanmn08EWvzuMh4VEuD8z+4QK5oI+MfQfSIerLAUfHoROf/LF0x3hwMswz0nmPAccTfWR4mZCJPZmyfHFoPCK68oblSt2VH3zaxjk+iJdJm++ieVBuQRvcDjPp/t9DbEaZQNLJsNxY7Is5qIbGeYpxtFKjrDcuxEoM9VW+gJbUwvqEVtkPFuhvEbWw+vQezh5XCJOU5en5vfk0CiUCnPb4kz+CSVkgzF8odyJaMpKL7cwNaPl9pZHYkBh3q0kUtA3TQRuakd07yXpSFcXmoylShlBkZrgx0Ln1+ConWON7Rj91g1bwT3Cv8WSWVjL9w1gLUEzitobLaPf7RA/Gm6qkoWqO8q81tgHELLxm0UjvH19kJ+D9TPpzjnpD3T8VHOp69ncQXcKfZwxGZZ4qJwKLbBQ+RjI9uwN6tkuybO2HKFahGM/ckni0YBTJcrKZpOzhyXjz2rHjaRp9MKgSwmg6M58ueEgtxyTuuqv/+uD92NOmxnINsVqle51WtXALn6KvTpsBjOHzsyK1ObJr41YMrpf2lU=
   app: mynzsales
     run:
       - "rake db:migrate"
-  on: production
+  on:
+    repo: allenzhong/SalesAssistant
   run:
     - "rake heroku:secrets RAILS_ENV=production"
     - "rake assets:precompile"
