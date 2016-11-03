@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="center-block">
+    <div class="text-center">
+      <h1>Product</h1>
+    </div>
+    <p id="notice"><%= notice %></p>
+
+    <table class="table table-bordered table-responsive">
+      <tr>
+        <td rowspan="4"><%=image_tag @product.image_url, size: "100" %></td>
+        <th>Name</th>
+        <td><%= @product.name %></td>
+      </tr>
+      <tr>
+        <th>Weight</th>
+        <td><%= @product.weight%></td>
+      </tr>
+      <tr>
+        <th>Price</th>
+        <td><%= @product.price%></td>
+      </tr>
+      <tr>
+        <th>Description</th>
+        <td><%= @product.description%></td>
+      </tr>
+    </table>
+    <div class="text-center">
+      <%= link_to 'Back', products_path, class: "btn btn-primary" %>
+      <%= link_to 'Edit', edit_product_path(@product), class: "btn btn-default" %>
+    </div>
+  </div>
+</div>
+

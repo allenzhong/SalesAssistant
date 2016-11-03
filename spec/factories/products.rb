@@ -6,4 +6,5 @@ FactoryGirl.define do
     f.weight {Faker::Number.decimal(2)}
     f.image_url {Faker::Internet.url}
   end
+
 end

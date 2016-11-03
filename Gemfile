@@ -34,11 +34,15 @@ gem 'jbuilder', '~> 2.5'
 # Use devise for authority and authentication
 gem 'devise'
 
+# Kaminari for paging
+gem 'kaminari'
+
 group :development, :test do
   gem 'faker'
   gem 'rspec-rails'
   gem "factory_girl_rails"
 
+  gem 'rails-controller-testing'
   gem 'database_cleaner'
   gem 'shoulda-matchers', '~> 3.1'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
