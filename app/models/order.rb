@@ -8,6 +8,7 @@ class Order < ApplicationRecord
   belongs_to :recipient
   has_many :order_items
   has_many :order_histories
+  validates :total, numericality: { greater_than_or_equal_to: 0 }
   enum status: {
     created: 0,
     paid: 1,
@@ -15,4 +16,6 @@ class Order < ApplicationRecord
     completed: 3,
     cancelled: 9
   }
+
+  scope :current_user, ->(user) { where(user: user) }
 end
