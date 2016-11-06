@@ -12,6 +12,7 @@ FactoryGirl.define do
     f.status { 0 }
     f.total { Faker::Number.decimal(2) }
     association :recipient, factory: :recipient, strategy: :create
+    association :user, factory: :user
 
     factory :order_with_items do
       transient do
