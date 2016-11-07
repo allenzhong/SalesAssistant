@@ -7,6 +7,7 @@ class Order < ApplicationRecord
   belongs_to :user
   belongs_to :recipient
   has_many :order_items
+  accepts_nested_attributes_for :order_items, reject_if: proc {|attributes| attributes['product_id']}, allow_destroy: true
   has_many :order_histories
   validates :total, numericality: { greater_than_or_equal_to: 0 }
   enum status: {
