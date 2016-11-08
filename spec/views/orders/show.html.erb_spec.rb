@@ -7,7 +7,7 @@ RSpec.describe "orders/show", type: :view do
 
   it "renders attributes in <p>" do
     render
-    expect(rendered).to include("table")
+    expect(rendered).to include(@order.total.to_s)
     assert_select "a[href=?]", edit_order_path(@order)
   end
 end
