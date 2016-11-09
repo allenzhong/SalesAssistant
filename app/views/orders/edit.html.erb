@@ -1,6 +1,9 @@
-<h1>Editing Order</h1>
+<div class="container">
+  <div class="center-block">
+    <div class="text-center">
+      <h1>Editing Order</h1>
+    </div>
+    <%= render 'form', order: @order %>
+  </div>
+</div>
 
-<%= render 'form', order: @order %>
-
-<%= link_to 'Show', @order %> |
-<%= link_to 'Back', orders_path %>
