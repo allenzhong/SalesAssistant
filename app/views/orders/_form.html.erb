@@ -26,10 +26,18 @@
   </div>
 
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10 col-md-10 links">
-    <h4>Order Items</h4>
+    <div class="col-sm-offset-2 col-sm-10 col-md-10">
+      <h4>Order Items</h4>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="order-item col-sm-offset-2 col-sm-10 col-md-10">
       <%= link_to_add_association 'Add Item', f, :order_items %>
     </div>
+  </div>
+
+  <div class="form-group">
     <div id="order_items">
       <%= f.fields_for :order_items do |item| %>
         <%= render 'order_item_fields', f: item %>
