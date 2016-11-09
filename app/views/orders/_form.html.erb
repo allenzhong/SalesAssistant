@@ -1,6 +1,6 @@
-<%= form_for(order) do |f| %>
+<%= form_for(order, html: {class: "form-horizontal"}) do |f| %>
   <% if order.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="form-group">
       <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
 
       <ul>
@@ -11,13 +11,29 @@
     </div>
   <% end %>
 
-  <%= f.select :status, Order.statuses.map {|key,value| [key.humanize, key]} %>
-  <div id="order_items">
-    <%= f.fields_for :order_items do |item| %>
-      <%= render 'order_item_fields', f: item %>
-    <% end %>
-    <div class="links">
+  <div class="form-group">
+    <%= f.label :status, class: "col-sm-2 col-md-2 control-label" %>
+    <div class="col-sm-10 col-md-10">
+      <%= f.select :status, Order.statuses.map {|key,value| [key.humanize, key]} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :total, class: "col-sm-2 col-md-2 control-label" %>
+    <div class="col-sm-10 col-md-10">
+      <%= f.text_field :total, class: "form-control", disabled: true %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10 col-md-10 links">
+    <h4>Order Items</h4>
       <%= link_to_add_association 'Add Item', f, :order_items %>
+    </div>
+    <div id="order_items">
+      <%= f.fields_for :order_items do |item| %>
+        <%= render 'order_item_fields', f: item %>
+      <% end %>
     </div>
   </div>
   <div class="actions">
