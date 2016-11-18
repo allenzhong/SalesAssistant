@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="center-block">
+    <div class="text-center">
+      <h1>Recipient</h1>
+    </div>
+    <p id="notice"><%= notice %></p>
+
+    <table class="table table-bordered table-responsive">
+      <tr>
+        <th>Name</th>
+        <td><%= @recipient.name %></td>
+      </tr>
+      <tr>
+        <th>Phone</th>
+        <td><%= @recipient.phone%></td>
+      </tr>
+      <tr>
+        <th>Address</th>
+        <td><%= @recipient.address%></td>
+      </tr>
+      <tr>
+        <th>Identity_number</th>
+        <td><%= @recipient.identity_number%></td>
+			</tr>
+			<tr>
+        <th>Memo</th>
+        <td><%= @recipient.memo%></td>
+      </tr>
+
+    </table>
+    <div class="text-center">
+      <%= link_to 'Back', recipients_path, class: "btn btn-primary" %>
+      <%= link_to 'Edit', edit_recipient_path(@recipient), class: "btn btn-default" %>
+    </div>
+  </div>
+</div>
+
