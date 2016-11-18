@@ -47,6 +47,7 @@ RSpec.describe RecipientsController, type: :controller do
   let(:invalid_attributes) {
 		{
 			name: "Test Recipient",
+			phone: "1",
 			address: "1296 Dominion",
 			identity_number: "1234",
 			memo: "first test"

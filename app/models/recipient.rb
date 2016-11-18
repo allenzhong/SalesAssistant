@@ -7,6 +7,7 @@
 #t.text :memo
 class Recipient < ApplicationRecord
 	validates :name, :phone, :address, presence: true
+	validates :phone, length: { minimum: 8 }
   belongs_to :user
   has_many :orders
 
