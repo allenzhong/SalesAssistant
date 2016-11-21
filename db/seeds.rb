@@ -104,3 +104,29 @@ Product.create!([
   }
 ])
 
+Recipient.create!([
+	{ 
+		user: admin,
+		name: "liyang",
+		phone: "0226228812",
+		address: "1296 Dominion Road",
+		identity_number: "611",
+		memo: "first buyer"	
+	},
+	{
+		user: admin,
+		name: "liyang_1",
+		phone: "0226228812",
+		address: "1296 Dominion Road",
+		identity_number: "611",
+		memo: "first buyer"	
+	},
+	{
+		user: admin,
+		name: "liyang_2",
+		phone: "0226228812",
+		address: "1296 Dominion Road",
+		identity_number: "611",
+		memo: "first buyer"	
+	}
+])
