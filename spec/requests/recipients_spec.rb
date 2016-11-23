@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Recipients", type: :request do
 
 	before(:each) do
-		sign_in FactoryGirl.create(:user) 
+		sign_in FactoryGirl.create(:user)
 	end
 
   describe "GET /recipients" do

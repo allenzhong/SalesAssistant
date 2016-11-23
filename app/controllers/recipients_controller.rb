@@ -4,7 +4,7 @@ class RecipientsController < ApplicationController
   # GET /recipients
   # GET /recipients.json
   def index
-		@recipients = Recipient.current_user(current_user).order(:name).page params[:page] 
+		@recipients = Recipient.current_user(current_user).order(:name).page params[:page]
   end
 
   # GET /recipients/1
