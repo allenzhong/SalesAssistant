@@ -23,44 +23,44 @@ RSpec.describe RecipientsController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # Recipient. As you add validations to Recipient, be sure to
   # adjust the attributes here as well.
-	let(:user) {controller.current_user}
+  let(:user) {controller.current_user}
   let(:valid_attributes) {
-  	{
-			name: "Test Recipient",
-			phone: "022123456",
-			address: "1296 Dominion",
-		  identity_number: "1234",
-			memo: "first test",
-			user: user	
-		}
-	}
+    {
+      name: "Test Recipient",
+      phone: "022123456",
+      address: "1296 Dominion",
+      identity_number: "1234",
+      memo: "first test",
+      user: user	
+    }
+  }
 
-	let(:update_valid_attributes) {
-  	{
-			name: "Test Recipient",
-			phone: "0221234567",
-			address: "1296 Dominion",
-		  identity_number: "1234",
-			memo: "first test"
-		}
-	}
+  let(:update_valid_attributes) {
+    {
+      name: "Test Recipient",
+      phone: "0221234567",
+      address: "1296 Dominion",
+      identity_number: "1234",
+      memo: "first test"
+    }
+  }
   let(:invalid_attributes) {
-		{
-			name: "Test Recipient",
-			phone: "1",
-			address: "1296 Dominion",
-			identity_number: "1234",
-			memo: "first test"
-		}	
-	}
+    {
+      name: "Test Recipient",
+      phone: "1",
+      address: "1296 Dominion",
+      identity_number: "1234",
+      memo: "first test"
+    }	
+  }
 
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # RecipientsController. Be sure to keep this updated too.
   #let(:valid_session) { {} }
-  
-	login_user
+
+  login_user
 
   describe "GET #index" do
     it "assigns all recipients as @recipients" do
@@ -129,20 +129,20 @@ RSpec.describe RecipientsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-				{
-					name: "Test Recipient",
-					phone: "022123456",
-					address: "1296 Dominion",
-					identity_number: "1234",
-					memo: "first test"
-				}
+        {
+          name: "Test Recipient",
+          phone: "022123456",
+          address: "1296 Dominion",
+          identity_number: "1234",
+          memo: "first test"
+        }
       }
 
       it "updates the requested recipient" do
         recipient = Recipient.create! valid_attributes
         put :update, params: {id: recipient.to_param, recipient: new_attributes}
         recipient.reload
-				expect(recipient.phone).to eq(new_attributes[:phone])
+        expect(recipient.phone).to eq(new_attributes[:phone])
       end
 
       it "assigns the requested recipient as @recipient" do

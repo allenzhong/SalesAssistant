@@ -4,7 +4,7 @@ class RecipientsController < ApplicationController
   # GET /recipients
   # GET /recipients.json
   def index
-		@recipients = Recipient.current_user(current_user).order(:name).page params[:page]
+    @recipients = Recipient.current_user(current_user).order(:name).page params[:page]
   end
 
   # GET /recipients/1
@@ -64,13 +64,13 @@ class RecipientsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_recipient
-      @recipient = Recipient.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_recipient
+    @recipient = Recipient.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def recipient_params
-			params.require(:recipient).permit(:name, :phone, :address, :identity_number, :memo)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def recipient_params
+    params.require(:recipient).permit(:name, :phone, :address, :identity_number, :memo)
+  end
 end

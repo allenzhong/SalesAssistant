@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "recipients/edit", type: :view do
   before(:each) do
-		@recipient = assign(:recipient, FactoryGirl.create(:recipient))
+    @recipient = assign(:recipient, FactoryGirl.create(:recipient))
   end
 
   it "renders the edit recipient form" do
