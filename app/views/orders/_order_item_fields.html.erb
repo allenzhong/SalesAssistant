@@ -3,7 +3,7 @@
     <div class="row">
       <div class="order-item col-xs-12 col-sm-4 col-md-4">
         <%= f.label :product_id, class: "sr-only" %>
-        <%= text_field_tag :product_name, nil, class: "form-control", placeholder: 'Product' %>
+        <%= f.text_field :product_name, class: "form-control", placeholder: 'Product' %>
         <%= f.hidden_field :product_id, class: "form-control", placeholder: "Product"%>
       </div>
       <div class="order-item col-xs-4 col-sm-3 col-md-3">

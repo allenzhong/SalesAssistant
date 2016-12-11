@@ -31,18 +31,16 @@
     </div>
   </div>
 
-  <div class="form-group">
-    <div class="order-item col-sm-offset-2 col-sm-10 col-md-10">
-      <%= link_to_add_association 'Add Item', f, :order_items %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div id="order_items">
+  <div id="order-items" class="form-group">
       <%= f.fields_for :order_items do |item| %>
         <%= render 'order_item_fields', f: item %>
       <% end %>
-    </div>
+      <div class="order-item col-sm-offset-2 col-sm-10 col-md-10">
+        <%= link_to_add_association 'Add Item', f, :order_items %>
+      </div>
+  </div>
+
+  <div class="form-group">
   </div>
   <div class="actions">
     <%= f.submit %>
