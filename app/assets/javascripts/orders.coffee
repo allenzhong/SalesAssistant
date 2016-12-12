@@ -1,7 +1,11 @@
 ready = ->
   #observing input change
   input_change = (e, input)->
-    list = add_autocomplete_box($(this))
+    $('.product-list').remove()
+    if($(this).val().length > 3)
+      find_product($(this).val(), $(this))
+
+
 
   $('#order-items')
     .on 'cocoon:before-insert', (e, order_to_be_added)->
@@ -15,17 +19,24 @@ ready = ->
       $(order[0]).off 'input'
 
   products = ['test', 'test2', 'test3']
-  add_autocomplete_box = (input)->
-    $('.product-list').remove()
+  add_autocomplete_box = (products, input)->
     list = $('<ul></ul>')
     list.addClass('product-list')
     list.width(input[0].offsetWidth)
     for p in products
       li = $('<li></li>', {
-        text: p
+        text: p.name
       })
       list.append(li)
     $(input).after(list)
+
+  find_product = (name, input) ->
+    $.getJSON('/products', {q: name})
+      .done (data)->
+        console.log data
+        if(data.length == 0)
+          return
+        list = add_autocomplete_box(data, input)
 
 $(document).ready ready
 $(document).on 'turbolinks:load', ready
