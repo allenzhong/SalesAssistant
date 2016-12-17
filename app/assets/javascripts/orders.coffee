@@ -27,7 +27,8 @@ ready = ->
       li = $('<li></li>', {
         text: p.name,
         'data-id': p.id,
-        'data-name': p.name
+        'data-name': p.name,
+        'data-unit-price':p.price
       })
       $(li).on('click', select_product)
       list.append(li)
@@ -40,23 +41,38 @@ ready = ->
           return
         list = add_autocomplete_box(data, input)
 
+  change_quantity = (e)->
+    quantity = parseInt($(this).val())
+    inputs = $(this).parents('.row').find('input')
+    unit_price_input = inputs[3]
+    subtotal_input = inputs[4]
+    if(quantity > 0)
+      subtotal = quantity * parseFloat($(unit_price_input).val())
+      $(subtotal_input).val(subtotal)
+    else
+      $(subtotal_input).val('')
+    return
+
   select_product = (e)->
     #query siblings inputs and add products to each input
     element = $(this)
     product_name = element.data('name')
     element.val(product_name)
     product_id = element.data('id')
+    unit_price = element.data('unit-price')
     #find inputs' siblings
     inputs = element.parents('.row').find('input')
     $(inputs).each (index,ele)->
       switch index
         when 0 then $(ele).val(product_name)
         when 1 then $(ele).val(product_id)
+        when 2 then $(ele).on('keyup',change_quantity)
+        when 3 then $(ele).val(unit_price)
       return
 
     $('.product-list').remove()
-
   return
+
 
 $(document).ready ready
 $(document).on 'turbolinks:load', ready
