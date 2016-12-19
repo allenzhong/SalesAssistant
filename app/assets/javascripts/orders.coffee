@@ -1,16 +1,4 @@
 ready = ->
-  $('#order-items')
-    .on 'cocoon:before-insert', (e, order_to_be_added)->
-      e.preventDefault()
-      console.log('before')
-    .on 'cocoon:after-insert', (e, added_order)->
-      e.preventDefault()
-      order = $(added_order)[0]
-      product_name_input = $(order).find('input')[0]
-      console.log product_name_input
-      $(product_name_input).on "input", input_change
-
-    .on 'cocoon:before-remove', (e, order)->
 
   #observing input change
   input_change = (e, input)->
@@ -40,6 +28,7 @@ ready = ->
         if(data.length == 0)
           return
         list = add_autocomplete_box(data, input)
+    return
 
   change_quantity = (e)->
     quantity = parseInt($(this).val())
@@ -71,8 +60,27 @@ ready = ->
       return
 
     $('.product-list').remove()
+    return
+
+  query_recipient = (e)->
+    console.log(e)
+    return
+
+  $('#order_recipient_name').on 'change', (e)->
+    console.log(e)
+    return
+
+  $('#order-items')
+    .on 'cocoon:before-insert', (e, order_to_be_added)->
+      console.log('before')
+    .on 'cocoon:after-insert', (e, added_order)->
+      order = $(added_order)[0]
+      product_name_input = $(order).find('input')[0]
+      console.log product_name_input
+      $(product_name_input).on "input", input_change
+
+    .on 'cocoon:before-remove', (e, order)->
+
   return
 
-
-$(document).ready ready
 $(document).on 'turbolinks:load', ready
