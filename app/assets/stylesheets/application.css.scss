@@ -40,16 +40,16 @@
 .gi-4x {font-size: 4em;}
 .gi-5x {font-size: 5em;}
 
-ul.product-list {
+.product-list {
   background: white;
-  padding: 0;
-  list-style-type: none;
-  position: fixed;
   border: solid 1px #ccc;
+  list-style-type: none;
+  padding: 0;
+  position: fixed;
   z-index: 999;
   li {
     margin: 0.5em 0em 0em 1em;
-    font-size: 0.9em;
+    font-size: .9em;
   }
   li:hover {
     background: #88D6E8;

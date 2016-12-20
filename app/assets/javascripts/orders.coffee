@@ -63,12 +63,13 @@ ready = ->
     return
 
   query_recipient = (e)->
-    console.log(e)
+    $.getJSON('/recipients', { q: $(this).val()})
+      .done (data)->
+        console.log data
+        return
     return
 
-  $('#order_recipient_name').on 'change', (e)->
-    console.log(e)
-    return
+  $('#order_recipient_name').on 'input', query_recipient
 
   $('#order-items')
     .on 'cocoon:before-insert', (e, order_to_be_added)->
