@@ -4,7 +4,11 @@ class RecipientsController < ApplicationController
   # GET /recipients
   # GET /recipients.json
   def index
-    @recipients = Recipient.current_user(current_user).order(:name).page params[:page]
+    if params[:q]
+      @recipients = Recipient.search_recipients(params[:q]).order(name: :desc)
+    else
+      @recipients = Recipient.current_user(current_user).order(:name).page params[:page]
+    end
   end
 
   # GET /recipients/1
@@ -71,6 +75,6 @@ class RecipientsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def recipient_params
-    params.require(:recipient).permit(:name, :phone, :address, :identity_number, :memo)
+    params.require(:recipient).permit(:name, :phone, :address, :identity_number, :memo, :q)
   end
 end

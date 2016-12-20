@@ -15,7 +15,6 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
-    @order.build_recipient
   end
 
   # GET /orders/1/edit

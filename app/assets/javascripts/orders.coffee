@@ -30,6 +30,17 @@ ready = ->
         list = add_autocomplete_box(data, input)
     return
 
+  sum_total = ()->
+    inputs = $("input[placeholder='Subtotal']")
+    sum = 0
+    inputs.each (index, ele)->
+      subtotal = parseFloat($(ele).val())
+      if(!isNaN(subtotal))
+        sum += subtotal
+      return
+    $('#order_total').val(sum)
+    return
+
   change_quantity = (e)->
     quantity = parseInt($(this).val())
     inputs = $(this).parents('.row').find('input')
@@ -40,6 +51,8 @@ ready = ->
       $(subtotal_input).val(subtotal)
     else
       $(subtotal_input).val('')
+
+    sum_total()
     return
 
   select_product = (e)->
@@ -62,10 +75,35 @@ ready = ->
     $('.product-list').remove()
     return
 
+  select_recipient = (e)->
+    #insert value
+    $('#order_recipient_name').val($(this).data('name'))
+    $('#order_recipient_address').val($(this).data('address'))
+    $('#order_recipient_phone').val($(this).data('phone'))
+    $('#order_recipient_id').val($(this).data('id'))
+    $('.product-list').remove()
+
+  add_recipients_box = (recipients, input)->
+    list = $('<ul></ul>')
+    list.addClass('product-list')
+    list.width(input[0].offsetWidth)
+    for r in recipients
+      li = $('<li></li>', {
+        text: r.name,
+        'data-id': r.id,
+        'data-name': r.name,
+        'data-address':r.address,
+        'data-phone': r.phone
+      })
+      $(li).on('click', select_recipient)
+      list.append(li)
+    $(input).after(list)
+
   query_recipient = (e)->
     $.getJSON('/recipients', { q: $(this).val()})
-      .done (data)->
-        console.log data
+      .done (data) =>
+        if data.length > 0
+          add_recipients_box(data, $(this))
         return
     return
 
@@ -79,6 +117,9 @@ ready = ->
       product_name_input = $(order).find('input')[0]
       console.log product_name_input
       $(product_name_input).on "input", input_change
+      # product_subtotal_input = $(order).find("input[placeholder='Subtotal']")[0]
+      # $(product_subtotal_input).on "change", (e)->
+      #   console.log e
 
     .on 'cocoon:before-remove', (e, order)->
 

@@ -11,5 +11,6 @@ class Recipient < ApplicationRecord
   belongs_to :user
   has_many :orders
 
-	scope :current_user, ->(user) {where(user: user)} 
+	scope :current_user, ->(user) {where(user: user)}
+  scope :search_recipients, ->(name) {where('name LIKE ?', "%#{name}%")}
 end
