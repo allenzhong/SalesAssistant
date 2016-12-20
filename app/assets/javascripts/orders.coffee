@@ -117,9 +117,6 @@ ready = ->
       product_name_input = $(order).find('input')[0]
       console.log product_name_input
       $(product_name_input).on "input", input_change
-      # product_subtotal_input = $(order).find("input[placeholder='Subtotal']")[0]
-      # $(product_subtotal_input).on "change", (e)->
-      #   console.log e
 
     .on 'cocoon:before-remove', (e, order)->
 
