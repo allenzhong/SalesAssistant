@@ -19,13 +19,15 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
+
   end
 
   # POST /orders
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-    @order.user = current_user  
+    @order.user = current_user
+    byebug
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
@@ -40,8 +42,10 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
+
     respond_to do |format|
       if @order.update(order_params)
+        byebug
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
       else
@@ -71,7 +75,7 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:status, :total, :recipient_id, :user_id,
                                     order_items_attributes: [
-                                      :product_id, :quantity, :subtotal, :rate, :discount
+                                      :product_id, :quantity, :subtotal ,:_destroy
                                     ])
     end
 end
