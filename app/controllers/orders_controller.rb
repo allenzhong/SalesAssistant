@@ -42,9 +42,8 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
-
     respond_to do |format|
-      if @order.update(order_params)
+      if @order.update_attributes(order_params)
         byebug
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
@@ -66,16 +65,16 @@ class OrdersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_order
-      @order = Order.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_order
+    @order = Order.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def order_params
-      params.require(:order).permit(:status, :total, :recipient_id, :user_id,
-                                    order_items_attributes: [
-                                      :product_id, :quantity, :subtotal ,:_destroy
-                                    ])
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def order_params
+    params.require(:order).permit(:status, :total, :recipient_id, :user_id,
+                                  order_items_attributes: [
+                                    :id, :quantity, :subtotal ,:_destroy
+    ])
+  end
 end

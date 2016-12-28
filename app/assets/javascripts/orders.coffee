@@ -107,6 +107,7 @@ ready = ->
         return
     return
 
+
   $('#order_recipient_name').on 'input', query_recipient
 
   $('#order-items')
@@ -117,8 +118,11 @@ ready = ->
       product_name_input = $(order).find('input')[0]
       console.log product_name_input
       $(product_name_input).on "input", input_change
+      return
 
-    .on 'cocoon:before-remove', (e, order)->
+    .on 'cocoon:after-remove', (e, order)->
+      order.find('input').last().val("true")
+      return
 
   return
 
