@@ -45,9 +45,11 @@
   border: solid 1px #ccc;
   list-style-type: none;
   padding: 0;
-  position: fixed;
+  position: relative;
   z-index: 999;
+  overflow: scroll;
   li {
+    postion: absolute;
     margin: 0.5em 0em 0em 1em;
     font-size: .9em;
   }
