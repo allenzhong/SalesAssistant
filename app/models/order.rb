@@ -35,4 +35,13 @@ class Order < ApplicationRecord
     return self.recipient.phone unless self.recipient.nil?
     return ""
   end
+
+  def recipient_description
+    return "" if self.recipient.nil?
+    return <<-DESC
+    #{self.recipient.name} <br/>
+    #{self.recipient.address} <br/>
+    #{self.recipient.phone}
+    DESC
+  end
 end

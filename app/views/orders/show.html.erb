@@ -1,6 +1,5 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
-
 </div>
 <div class="container">
   <div class="center-block">
@@ -8,12 +7,32 @@
       <h1>Product</h1>
     </div>
     <p id="notice"><%= notice %></p>
-
-    <table class="table table-bordered table-responsive">
+    <table class="table table-bordered table-responsive compact">
+      <tr>
+        <th>Recipient</th>
+        <td><%= raw(@order.recipient_description)%></td>
+      </tr>
+      <tr>
+        <th>Status</th>
+        <td><%= @order.status %></td>
+      </tr>
       <tr>
         <th>Total</th>
         <td><%= @order.total%></td>
       </tr>
+      <tr>
+        <td colspan="2" style="text-align: center;">
+          <strong>Items</strong>
+        </td>
+      </tr>
+      <% @order.order_items.each do |item| %>
+        <tr>
+          <td colspan="2"> <%= item.product_name %> <br/>
+            <%= item.quantity %> x <%= item.product.price %> =
+            <%= item.subtotal %>
+          </td>
+        </tr>
+      <% end %>
     </table>
     <div class="text-center">
       <%= link_to 'Back', orders_path, class: "btn btn-primay" %>
@@ -21,4 +40,3 @@
     </div>
   </div>
 </div>
-

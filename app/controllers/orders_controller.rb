@@ -27,7 +27,6 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.user = current_user
-    byebug
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
@@ -44,7 +43,6 @@ class OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update_attributes(order_params)
-        byebug
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
       else
