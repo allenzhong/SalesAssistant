@@ -67,3 +67,24 @@
 .product-list_hide {
   display: none;
 }
+
+.recipients-list {
+  background: white;
+  border: solid 1px #ccc;
+  list-style-type: none;
+  padding: 0;
+  position: absolute;
+  z-index: 999;
+  overflow: scroll;
+  li {
+    postion: absolute;
+    margin: 0.5em 0em 0em 1em;
+    font-size: .9em;
+  }
+  li:hover {
+    background: #88D6E8;
+  }
+}
+.recipients-list_hide {
+  display: none;
+}

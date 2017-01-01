@@ -1,10 +1,9 @@
 ready = ->
-
   #observing input change
   input_change = (e, input)->
     e.preventDefault()
     $('.product-list').remove()
-    if($(this).val().length > 3)
+    if($(this).val().length > 2)
       find_product($(this).val(), $(this))
 
   add_autocomplete_box = (products, input)->
@@ -81,11 +80,15 @@ ready = ->
     $('#order_recipient_address').val($(this).data('address'))
     $('#order_recipient_phone').val($(this).data('phone'))
     $('#order_recipient_id').val($(this).data('id'))
-    $('.product-list').remove()
+    $('.recipients-list').remove()
 
   add_recipients_box = (recipients, input)->
-    list = $('<ul></ul>')
-    list.addClass('product-list')
+    if ($('.recipients-list').length > 0)
+      list = $('.recipients-list')
+      list.empty()
+    else
+      list = $('<ul></ul>')
+      list.addClass('recipients-list')
     list.width(input[0].offsetWidth)
     for r in recipients
       li = $('<li></li>', {
