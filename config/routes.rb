@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'home/index'
   devise_for :users
   resources :products
+  match 'show_modal', to: 'orders#show_modal', via: [:get]
   resources :orders
-  resources :products, :recipients
+  resources :recipients
 end

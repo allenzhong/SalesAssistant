@@ -88,3 +88,10 @@
 .recipients-list_hide {
   display: none;
 }
+
+@media only screen and (max-width: 767px) {
+  .full-width {
+    margin-top: 5px;
+    width: 100%;
+  }
+}

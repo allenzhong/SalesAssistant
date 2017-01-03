@@ -31,7 +31,6 @@ class RecipientsController < ApplicationController
     @recipient = Recipient.new(recipient_params)
     @recipient.user = current_user
 
-
     respond_to do |format|
       if @recipient.save
         format.html { redirect_to @recipient, notice: 'Recipient was successfully created.' }

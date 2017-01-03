@@ -17,8 +17,8 @@
       <%= f.text_field :recipient_name, class: "form-control"%>
       <%= f.hidden_field :recipient_id %>
     </div>
-    <div class="col-sm-3 col-md-3">
-      <%= f.button 'Add New Recipient', class: "btn btn-primary"%>
+    <div class="col-xs-12 col-sm-3 col-md-3">
+      <%= link_to 'Add Recipient', new_recipient_path, class: "btn btn-primary full-width", remote: true %>
     </div>
   </div>
 
@@ -71,3 +71,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+<div id="recipient-model"></div>
