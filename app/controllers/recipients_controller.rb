@@ -35,9 +35,11 @@ class RecipientsController < ApplicationController
       if @recipient.save
         format.html { redirect_to @recipient, notice: 'Recipient was successfully created.' }
         format.json { render :show, status: :created, location: @recipient }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @recipient.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
