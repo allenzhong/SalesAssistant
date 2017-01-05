@@ -19,4 +19,8 @@ class OrderItem < ApplicationRecord
     return self.product.price unless self.product.nil?
     return ""
   end
+
+  def profit_rate
+    30
+  end
 end

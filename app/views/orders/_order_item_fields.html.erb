@@ -1,22 +1,32 @@
 <div class="nested-fields col-sm-10 col-md-10">
   <div class="col-sm-offset-2 col-md-offset-2 col-sm-10 col-md-10">
     <div class="row">
-      <div class="order-item col-xs-12 col-sm-4 col-md-4">
+      <div class="order-item col-xs-12 col-sm-12 col-md-12">
         <%= f.label :product_id, class: "sr-only" %>
         <%= f.text_field :product_name, class: "form-control", placeholder: 'Product' %>
         <%= f.hidden_field :product_id, class: "form-control", placeholder: "Product"%>
       </div>
-      <div class="order-item col-xs-4 col-sm-3 col-md-3">
+    </div>
+    <div class="row">
+      <div class="order-item col-xs-4 col-sm-6 col-md-6">
         <%= f.label :quantity, class: "sr-only" %>
         <%= f.text_field :quantity, class: "form-control", placeholder: "Quantity"%>
         <%= f.hidden_field :unit_price, class: "form-control", placeholder: "Product"%>
       </div>
-      <div class="order-item col-xs-4 col-sm-3 col-md-3">
+      <div class="order-item col-xs-4 col-sm-6 col-md-6">
         <%= f.label :subtotal, class: "sr-only" %>
         <%= f.text_field :subtotal, class: "form-control", placeholder: "Subtotal"%>
       </div>
-
-      <div class="order-item col-xs-4 col-sm-2 col-md-2">
+    </div>
+    <div class="row">
+      <div  class="order-item col-xs-4 col-sm-4 col-md-4 profit-percentage">
+        <%= f.text_field :profit_rate, class: "form-control", placeholder: "Profit Rate" %>
+        <span>%</span>
+      </div>
+      <div class="order-item col-xs-4 col-sm-4 col-md-4">
+        <%= f.text_field :profit, class: "form-control", placeholder: "Profit"%>
+      </div>
+      <div class="order-item col-xs-4 col-sm-4 col-md-4">
         <%= link_to_remove_association f do %>
           <span class="glyphicon glyphicon-remove gi-2x" aria-hidden="true"></span>
         <% end %>

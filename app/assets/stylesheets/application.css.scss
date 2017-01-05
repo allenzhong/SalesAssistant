@@ -92,6 +92,18 @@
 .actions {
   
 }
+.profit-percentage {
+  position: relative;
+  input {
+    padding-right: 2em;
+  }
+  span {
+    font-weight: bold;
+    position: absolute;
+    right: 20px;
+    top: 0.6em;
+  }
+}
 @media only screen and (max-width: 767px) {
   .full-width {
     margin-top: 5px;

@@ -41,13 +41,21 @@ ready = ->
     return
 
   change_quantity = (e)->
-    quantity = parseInt($(this).val())
-    inputs = $(this).parents('.row').find('input')
+    inputs = $(this).parents('.nested-fields').find('input')
+    quantity_input = inputs[2]
+    quantity = parseInt($(quantity_input).val())
     unit_price_input = inputs[3]
     subtotal_input = inputs[4]
+    profit_rate_input = inputs[5]
+    profit_input = inputs[6]
+    console.log inputs 
     if(quantity > 0)
-      subtotal = quantity * parseFloat($(unit_price_input).val())
-      $(subtotal_input).val(subtotal)
+      cost = quantity * parseFloat($(unit_price_input).val())
+      console.log cost
+      subtotal = cost + cost * (parseFloat($(profit_rate_input).val())/100) 
+      console.log subtotal
+      $(profit_input).val((subtotal - cost).toFixed(2))
+      $(subtotal_input).val(subtotal.toFixed(2))
     else
       $(subtotal_input).val('')
 
@@ -62,13 +70,14 @@ ready = ->
     product_id = element.data('id')
     unit_price = element.data('unit-price')
     #find inputs' siblings
-    inputs = element.parents('.row').find('input')
+    inputs = element.parents('.nested-fields').find('input')
     $(inputs).each (index,ele)->
       switch index
         when 0 then $(ele).val(product_name)
         when 1 then $(ele).val(product_id)
         when 2 then $(ele).on('keyup',change_quantity)
         when 3 then $(ele).val(unit_price)
+        when 5 then $(ele).on('keyup', change_quantity)
       return
 
     $('.product-list').remove()
