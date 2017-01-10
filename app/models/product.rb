@@ -12,4 +12,5 @@ class Product < ApplicationRecord
   belongs_to :user
 
   scope :current_user, ->(user) {where(user: user)}
+  scope :search_products, ->(name) {where(' name LIKE ?', "%#{name}%")}
 end

@@ -1,0 +1,14 @@
+.product-list {
+  background: white;
+  list-style: none;
+  position: fixed;
+  border: solid 1px #ccc;
+  z-index: 999;
+  li {
+    font-size: 0.7em;
+  }
+}
+
+.product-list_hide {
+  display: none;
+}

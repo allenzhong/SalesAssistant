@@ -33,7 +33,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Use devise for authority and authentication
 gem 'devise'
-
+# Cocoon for nested form
+gem 'cocoon'
 # Kaminari for paging
 gem 'kaminari'
 
