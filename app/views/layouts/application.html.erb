@@ -24,7 +24,8 @@
           <ul class="nav navbar-nav">
             <% if user_signed_in? %>
               <li class=""> <%= link_to "Products", products_path %> </li>
-              <li class=""><a href="#">Order</a></li>
+              <li class=""> <%= link_to "Orders", orders_path %> </li>
+              <li class=""> <%= link_to "Recipient", recipients_path %> </li>
             <% end %>
           </ul>
           <ul class="nav navbar-nav navbar-right">

@@ -15,6 +15,12 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+// .table tbody>tr td {
+//   padding: 8px 4px 4px 2px;
+// }
+.compact tbody>tr th {
+  width: 50px;
+}
 
 .table tbody>tr td.bottom-border{
   border-top : dotted 1px #ccc;
@@ -22,4 +28,85 @@
 }
 .table tbody>tr>td.vert-align{
   vertical-align: middle;
+}
+
+.nested-fields {
+  margin: 1.2em 0 0 0;
+  .form-control::-webkit-input-placeholder {
+    font-size: 0.6em;
+  }
+}
+
+.order-item {
+  margin-top: 1em;
+}
+
+.gi-2x {font-size: 2.2em;}
+.gi-3x {font-size: 3em;}
+.gi-4x {font-size: 4em;}
+.gi-5x {font-size: 5em;}
+
+.product-list {
+  background: white;
+  border: solid 1px #ccc;
+  list-style-type: none;
+  padding: 0;
+  position: relative;
+  z-index: 999;
+  overflow: scroll;
+  li {
+    postion: absolute;
+    margin: 0.5em 0em 0em 1em;
+    font-size: .9em;
+  }
+  li:hover {
+    background: #88D6E8;
+  }
+}
+
+.product-list_hide {
+  display: none;
+}
+
+.recipients-list {
+  background: white;
+  border: solid 1px #ccc;
+  list-style-type: none;
+  padding: 0;
+  position: absolute;
+  z-index: 999;
+  overflow: scroll;
+  li {
+    postion: absolute;
+    margin: 0.5em 0em 0em 1em;
+    font-size: .9em;
+  }
+  li:hover {
+    background: #88D6E8;
+  }
+}
+.recipients-list_hide {
+  display: none;
+}
+
+.actions {
+  
+}
+.profit-percentage {
+  position: relative;
+  input {
+    padding-right: 2em;
+  }
+  span {
+    font-weight: bold;
+    position: absolute;
+    right: 20px;
+    top: 0.6em;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .full-width {
+    margin-top: 5px;
+    width: 100%;
+  }
 }

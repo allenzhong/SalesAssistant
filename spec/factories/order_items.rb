@@ -8,10 +8,11 @@ FactoryGirl.define do
     order
   end
 
-  factory :order_with do |f|
+  factory :order do |f|
     f.status { 0 }
-    f.totoal { Faker::Number.decimal(2) }
-    association :recipient, factory: :recipient, strategy: :build
+    f.total { Faker::Number.decimal(2) }
+    association :recipient, factory: :recipient, strategy: :create
+    association :user, factory: :user
 
     factory :order_with_items do
       transient do

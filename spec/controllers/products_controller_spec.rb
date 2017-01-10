@@ -19,6 +19,7 @@ require 'rails_helper'
 
 RSpec.describe ProductsController, type: :controller do
 
+  let(:user) { controller.current_user }
   # This should return the minimal set of attributes required to create a valid
   # Product. As you add validations to Product, be sure to
   # adjust the attributes here as well.
@@ -28,7 +29,8 @@ RSpec.describe ProductsController, type: :controller do
       weight: 0.2,
       price: 21.99,
       description: "Test Description",
-      image_url: "http://localhost/"
+      image_url: "http://localhost/",
+      user: user
     }
   }
 

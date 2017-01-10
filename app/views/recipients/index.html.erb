@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="container">
+    <div class="header">
+      <h1>
+        Recipient
+        <div class="pull-right">
+          <%= link_to new_recipient_path, class:"btn btn-primary" do %>
+            <span class="glyphicon glyphicon-plus"></span>
+
+          <% end %>
+        </div>
+      </h1>
+    </div>
+  </div>
+  <div class="center-block">
+    <p id="notice"><%= notice %></p>
+
+    <table class="table table-hover table-responsive">
+      <thead>
+        <tr>
+          <th rowspan="2"></th>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th class="visible-md-block">Identity_number</th>
+          <th class="visible-md-block">Memo</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @recipients.each do |recipient| %>
+          <tr>
+            <td class="vert-align"></td>
+            <td class="vert-align"><%= recipient.name%></td>
+            <td class="vert-align"><%= recipient.phone%></td>
+            <td class="vert-align"><%= recipient.address%></td>
+            <td class="vert-align visible-md-block"><%= recipient.identity_number%></td>
+            <td class="vert-align visible-md-block"><%= recipient.memo%></td>
+            <td class="vert-align">
+              <div class="text-right">
+                <%= link_to recipient, class: "btn btn-default" do%>
+                  <span class="glyphicon glyphicon-info-sign"></span>
+                <% end %>
+                <%= link_to edit_recipient_path(recipient), class: "btn btn-default" do %>
+                  <span class="glyphicon glyphicon-edit"></span>
+                <% end %>
+                <%= link_to recipient, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" do%>
+                  <span class="glyphicon glyphicon-remove-sign"></span>
+                <% end %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <%= paginate @recipients %>
+
+  </div>
+</div>
